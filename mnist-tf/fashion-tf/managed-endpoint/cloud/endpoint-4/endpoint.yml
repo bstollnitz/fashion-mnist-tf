@@ -1,3 +1,0 @@
-$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
-name: endpoint-managed-fashion-4
-auth_mode: key
