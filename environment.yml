@@ -1,4 +1,4 @@
-name: mnist-tf
+name: fashion-mnist-tf
 channels:
   - conda-forge
   - defaults
@@ -11,4 +11,3 @@ dependencies:
   - pip
   - pip:
       - tensorflow==2.5
-

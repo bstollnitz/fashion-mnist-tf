@@ -10,13 +10,13 @@ If you have access to GitHub Codespaces, click on the "Code" button in this GitH
 Install conda environment:
 
 ```
-conda env create -f conda.yml
+conda env create -f environment.yml
 ```
 
 Activate conda environment:
 
 ```
-conda activate fashion-mnist
+conda activate fashion-mnist-tf
 ```
 
 
