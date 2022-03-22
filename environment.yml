@@ -5,7 +5,6 @@ channels:
 dependencies:
   - python==3.9.5
   - pillow==8.3.1
-  - matplotlib==3.3.4
   - yapf==0.31.0
   - pylint==2.12.1
   - pip
