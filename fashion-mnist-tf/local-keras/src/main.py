@@ -1,13 +1,12 @@
 """Training, evaluation, and prediction."""
 
 import os
-import random
 from typing import Tuple
+
 from PIL import Image
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 
@@ -26,8 +25,8 @@ labels_map = {
     9: 'Ankle Boot',
 }
 
-MODEL_DIRPATH = 'fashion-mnist/fashion-keras/outputs/weights'
-IMAGE_FILEPATH = 'fashion-mnist/fashion-keras/src/predict-image.png'
+MODEL_DIRPATH = 'fashion-mnist-tf/local-keras/model/weights'
+IMAGE_FILEPATH = 'fashion-mnist-tf/local-keras/src/predict-image.png'
 
 
 def _get_data(batch_size: int) -> Tuple[tf.data.Dataset, tf.data.Dataset]:
@@ -52,24 +51,6 @@ def _get_data(batch_size: int) -> Tuple[tf.data.Dataset, tf.data.Dataset]:
     return (train_dataset, test_dataset)
 
 
-def _visualize_data(dataset: tf.data.Dataset) -> None:
-    """Displays a few images from the Dataset object passed as a
-    parameter."""
-    first_batch = dataset.as_numpy_iterator().next()
-    figure = plt.figure(figsize=(8, 8))
-    cols = 3
-    rows = 3
-    for i in range(1, cols * rows + 1):
-        sample_idx = random.randint(0, len(first_batch[0]))
-        image = first_batch[0][sample_idx]
-        label = first_batch[1][sample_idx]
-        figure.add_subplot(rows, cols, i)
-        plt.title(labels_map[label])
-        plt.axis('off')
-        plt.imshow(image.squeeze(), cmap='gray')
-    plt.show()
-
-
 def training_phase():
     """Trains the model for a number of epochs, and saves it."""
     learning_rate = 0.1
@@ -77,11 +58,8 @@ def training_phase():
     epochs = 5
 
     (train_dataset, test_dataset) = _get_data(batch_size)
-    # _visualize_data(train_dataset)
 
     model = NeuralNetwork()
-    # model.build((1, 28, 28))
-    # model.summary()
 
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     optimizer = tf.keras.optimizers.SGD(learning_rate)

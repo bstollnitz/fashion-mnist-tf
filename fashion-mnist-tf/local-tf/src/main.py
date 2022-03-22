@@ -27,7 +27,7 @@ labels_map = {
     9: 'Ankle Boot',
 }
 
-MODEL_DIRPATH = 'fashion-mnist/fashion-tf/outputs/weights'
+MODEL_DIRPATH = 'fashion-mnist/fashion-tf/model/weights'
 IMAGE_FILEPATH = 'fashion-mnist/fashion-tf/src/predict-image.png'
 
 
