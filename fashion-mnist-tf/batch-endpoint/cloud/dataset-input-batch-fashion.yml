@@ -1,3 +1,0 @@
-$schema: https://azuremlschemas.azureedge.net/latest/dataset.schema.json
-name: dataset-input-batch-fashion
-local_path: ../sample-request/
