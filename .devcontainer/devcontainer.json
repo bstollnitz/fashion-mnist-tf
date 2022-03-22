@@ -10,11 +10,8 @@
         "python.defaultInterpreterPath": "/opt/conda/bin/python",
     },
     "extensions": [
-        "ms-toolsai.vscode-ai",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
     ],
-    "features": {
-        "azure-cli": "latest"
-    },
     "remoteUser": "vscode",
-    "onCreateCommand": "az extension add -n ml -y",
 }
