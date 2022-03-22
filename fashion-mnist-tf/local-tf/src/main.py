@@ -1,13 +1,11 @@
 """Training, evaluation, and prediction."""
 
 import os
-import random
 import time
 from typing import Tuple
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 from PIL import Image
