@@ -27,8 +27,8 @@ labels_map = {
     9: 'Ankle Boot',
 }
 
-MODEL_DIRPATH = 'fashion-mnist/fashion-tf/model/weights'
-IMAGE_FILEPATH = 'fashion-mnist/fashion-tf/src/predict-image.png'
+MODEL_DIRPATH = 'fashion-mnist-tf/local-tf/model/weights'
+IMAGE_FILEPATH = 'fashion-mnist-tf/local-tf/src/predict-image.png'
 
 
 def _get_data(batch_size: int) -> Tuple[tf.data.Dataset, tf.data.Dataset]:
@@ -51,24 +51,6 @@ def _get_data(batch_size: int) -> Tuple[tf.data.Dataset, tf.data.Dataset]:
     test_dataset = test_dataset.batch(batch_size).shuffle(500)
 
     return (train_dataset, test_dataset)
-
-
-def _visualize_data(dataset: tf.data.Dataset) -> None:
-    """Displays a few images from the Dataset object passed as a
-    parameter."""
-    first_batch = dataset.as_numpy_iterator().next()
-    figure = plt.figure(figsize=(8, 8))
-    cols = 3
-    rows = 3
-    for i in range(1, cols * rows + 1):
-        sample_idx = random.randint(0, len(first_batch[0]))
-        image = first_batch[0][sample_idx]
-        label = first_batch[1][sample_idx]
-        figure.add_subplot(rows, cols, i)
-        plt.title(labels_map[label])
-        plt.axis('off')
-        plt.imshow(image.squeeze(), cmap='gray')
-    plt.show()
 
 
 def _fit(dataset: tf.data.Dataset, model: tf.keras.Model,
@@ -166,11 +148,8 @@ def training_phase():
     epochs = 5
 
     (train_dataset, test_dataset) = _get_data(batch_size)
-    # _visualize_data(train_dataset)
 
     model = NeuralNetwork()
-    # model.build((1, 28, 28))
-    # model.summary()
 
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     optimizer = tf.optimizers.SGD(learning_rate)
